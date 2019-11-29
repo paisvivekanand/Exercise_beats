@@ -38,8 +38,11 @@ def get_pulse_rate():
     row = cursor.fetchone()
     cursor.close()
     connection.close()
-    print(int(row[0]))
-    return int(row[0])
+    try:
+        print(int(row[0]))
+        return int(row[0])
+    except Exception as ex:
+        return 50
 
 # def get_pulse_rate_initial():
 #     num = random.randint(50,80)
@@ -172,7 +175,7 @@ def update_in_db_initial(curr_song, bpm, index):
     connection = pymysql.connect(host, username, None, db_name, port = port)
     cursor = connection.cursor()
     cursor.execute(query_curr)
-    query_curr='update Song set average_bpm = %s , starting_point =%s where song_name = "' + curr_song+'"'
+    query_curr = 'update Song set average_bpm = %s , starting_point =%s where song_name = "' + curr_song+'"'
     input=(int(bpm), index)
     print(query_curr, input)
     cursor.execute(query_curr, input)

@@ -376,13 +376,13 @@ def trial_play_main_eng():
     pygame.init()
     pulseRateMark = 0
     currsong = ''
-    start_time =  time.time()
+    start_time = time.time()
     sound=None
     mycursor = mydb.cursor()
     mycursor.execute("select status from controls where id=0")
     myresult = list(mycursor.fetchall())[0][0]
     while True:
-        if myresult==2:
+        if myresult == 2:
             print("Running stubbed")
             status = g.get_sensor_status()
             print(status)
@@ -413,7 +413,7 @@ def trial_play_main_eng():
                         sound2 = pygame.mixer.Sound(songsPath + song)
                         sound, sound2 = play_song1(sound, sound2)
                     print("waiting for", math.floor(pulseRateMark + pulseRateMark / 20))
-                    time.sleep(10)
+                    time.sleep(1)
                     print("***************************")
                     present_duration = time.time()- start_time
                     print(present_duration)
@@ -485,7 +485,7 @@ def trial_play_main_eng():
                         sound2 = pygame.mixer.Sound(songsPath + song)
                         sound, sound2 = play_song(sound, sound2)
                     print("waiting for", math.floor(pulseRateMark + pulseRateMark / 20))
-                    time.sleep(10)
+                    time.sleep(1)
                     print("***************************")
                     present_duration = time.time() - start_time
                     print(present_duration)

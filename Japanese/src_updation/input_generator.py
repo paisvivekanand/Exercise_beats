@@ -54,8 +54,8 @@ def get_pulse_rate_initial():
     return num
 
 def get_pulse_rate(present_duration):
-    if present_duration< 100:
-        num = random.randint(50,110)
+    if present_duration < 100:
+        num = random.randint(50, 110)
     elif ((present_duration >= 100) and (present_duration< 200)):
         num = random.randint(110, 145)
     elif present_duration >= 200:
